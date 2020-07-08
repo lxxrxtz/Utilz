@@ -12,6 +12,7 @@ while (onoff == 1) {
   
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
   
+  
     System.out.print("\n \nPlease enter a command: ");
     String cmd = null;
     
