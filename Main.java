@@ -12,7 +12,6 @@ while (onoff == 1) {
   
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
   
-  
     System.out.print("\n \nPlease enter a command: ");
     String cmd = null;
     
@@ -27,6 +26,9 @@ while (onoff == 1) {
             char c1 = chars.charAt(rnd.nextInt(chars.length()));
             char c2 = chars.charAt(rnd.nextInt(chars.length()));
             char c3 = chars.charAt(rnd.nextInt(chars.length()));
+            int cu = (int) (2*Math.random());
+            int pos = (int) (3*Math.random());
+
             int sz = (int) (3*Math.random());
           
           if (sz == 0) {
@@ -48,7 +50,6 @@ while (onoff == 1) {
             else if (s1 == 3) {
              s11 = "?";
             }
-            
               System.out.println("\n \n" + n1 + "" + c1 + n2 + c2 + n3 + c3 + s11);
           }
           
