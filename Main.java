@@ -6,18 +6,26 @@ import java.util.Random;
 class Main {
   public static void main(String[] args) {
     
+    boolean run = false;
+    boolean login = false;
+    boolean pwc = false;
+    String user1 = "admin";
+    String pswd1 = "password";
     int onoff = 1;
     
 while (onoff == 1) {
   
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
   
+  if (run == false) {
     System.out.print("\n \nPlease enter a command: ");
+  }
     String cmd = null;
+  
     
     try {
         cmd = reader.readLine();
-        if (cmd.equalsIgnoreCase("new")) {
+        if (cmd.equalsIgnoreCase("new") && run == false) {
             int n1 = (int) (101*Math.random());
             int n2 = (int) (101*Math.random());
             int n3 = (int) (101*Math.random());
@@ -98,14 +106,51 @@ while (onoff == 1) {
             
               System.out.println("\n \n" + n1 + "" + c1 + n2 + c2 + s33 + n3 + c3);
           }
-        } else if (cmd.equalsIgnoreCase("help")) {
-          System.out.println("\n \n———————————————————————————— \n Help-Menu \n———————————————————————————— \n new - Generates a Password \n help - Shows this menu \n reload - Reloads the script \n stop - Stops the script \n————————————————————————————");
-        } else if (cmd.equalsIgnoreCase("stop")) {
-        System.out.println("Powered off.");
+        } else if (cmd.equalsIgnoreCase("help") && run == false) {
+          System.out.println("\n \n———————————————————————————— \n Help-Menu \n———————————————————————————— \n new - Generates a Password \n \n random - Shows you a random \n screenshot someone took\n \n help - Shows this menu \n \n reload - Reloads the script \n \n stop - Stops the script \n————————————————————————————");
+        } else if (cmd.equalsIgnoreCase("login") && login == false && run == false) {
+          run = true;
+          System.out.println("\n \nUsername: ");
+        } else if (cmd.equalsIgnoreCase("login") && login == true) {
+          System.out.println("\n \nYou're already logged in.");
+        }
+         else if (cmd.equalsIgnoreCase(user1) && run == true) {
+           pwc = true;
+            System.out.println("\n \nPassword: ");
+         } else if (run == true && !cmd.equalsIgnoreCase(user1) && pwc == false) {
+           System.out.println("\nThis user doesn't exist.\n \nUsername: ");
+         }
+            else if (cmd.equalsIgnoreCase(pswd1) && run == true && pwc == true) {
+              System.out.println("\n \nLogin successfull!");
+              pwc = false;
+              login = true;
+              run = false;
+        } else if (run == true && !cmd.equalsIgnoreCase(pswd1) && pwc == true) {
+          System.out.println("\nIncorrect password. Try again. \n \nPassword: ");
+        }
+        
+        else if (cmd.equalsIgnoreCase("stop") && login == true && run == false) {
+        System.out.println("\n \nPowered off.");
          onoff = 0;
-        } else if (cmd.equalsIgnoreCase("reload")) {
+        } else if (cmd.equalsIgnoreCase("stop") && login == false && run == false) {
+        System.out.println("\n \nPlease login using command 'login' in order to execute this command.");
+        }
+        
+        else if (cmd.equalsIgnoreCase("reload") && login == true && run == false) {
           System.out.println("\n \nReloading...");
           onoff = 2;
+        } else if (cmd.equalsIgnoreCase("reload") && login == false && run == false) {
+          System.out.println("\n \nPlease login using command 'login' in order to execute this command.");
+        } else if (cmd.equalsIgnoreCase("random") && run == false) {
+          int z1 = (int) (10*Math.random());
+          int z2 = (int) (10*Math.random());
+          int z3 = (int) (10*Math.random());
+          int z4 = (int) (10*Math.random());
+          Random rnd = new Random();
+          char b1 = (char) (rnd.nextInt(26) + 'a');
+          char b2 = (char) (rnd.nextInt(26) + 'a');
+
+          System.out.println("\n \nhttps://prnt.sc/" + b1 + b2 + z1 + z2 + z3 + z4);
         }
           
   if (onoff == 2) {
